@@ -9,7 +9,6 @@ import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import AppLayout from "./ui/AppLayout.jsx";
 import { Toaster } from "react-hot-toast";
 import { useState } from "react";
-// Ensure React is imported for useState
 
 // Sample recipe data
 const recipes = [
@@ -18,7 +17,6 @@ const recipes = [
   { name: "Sushi", category: "Japanese" },
   { name: "Pasta", category: "Italian" },
   { name: "Biryani", category: "Indian" },
-  // Add more recipes here
 ];
 
 const App = () => {
@@ -49,34 +47,6 @@ const App = () => {
       <ReactQueryDevtools initialIsOpen={false} />
       <Navbar />
 
-      {/* Search Box and Filters */}
-      <div className="flex justify-center gap-4 mt-4 mb-8">
-        <input
-          type="text"
-          placeholder="Search Recipes"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="p-2 border border-gray-300 rounded"
-        />
-        <select
-          value={filteredCategory}
-          onChange={handleCategoryChange}
-          className="p-2 border border-gray-300 rounded"
-        >
-          <option value="All">All Categories</option>
-          <option value="Indian">Indian</option>
-          <option value="Italian">Italian</option>
-          <option value="Japanese">Japanese</option>
-        </select>
-        <button
-          onClick={handleSearch}
-          className="p-2 bg-blue-500 text-white rounded"
-        >
-          Search
-        </button>
-      </div>
-
-      {/* Displaying the filtered recipe list */}
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <Routes>
           <Route
@@ -86,11 +56,44 @@ const App = () => {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate replace to="/home" />} />
+            <Route
+              index
+              element={
+                <Navigate replace to="/home" />
+              }
+            />
             <Route
               path="/home"
               element={
                 <div>
+                  {/* Search Box and Filters */}
+                  <div className="flex justify-center gap-4 mt-4 mb-8">
+                    <input
+                      type="text"
+                      placeholder="Search Recipes"
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                      className="p-2 border border-gray-300 rounded"
+                    />
+                    <select
+                      value={filteredCategory}
+                      onChange={handleCategoryChange}
+                      className="p-2 border border-gray-300 rounded"
+                    >
+                      <option value="All">All Categories</option>
+                      <option value="Indian">Indian</option>
+                      <option value="Italian">Italian</option>
+                      <option value="Japanese">Japanese</option>
+                    </select>
+                    <button
+                      onClick={handleSearch}
+                      className="p-2 bg-blue-500 text-white rounded"
+                    >
+                      Search
+                    </button>
+                  </div>
+
+                  {/* Displaying the filtered recipe list */}
                   <h1 className="text-center text-2xl font-bold mb-4">
                     Recipe List
                   </h1>
