@@ -8,7 +8,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import AppLayout from "./ui/AppLayout.jsx";
 import { Toaster } from "react-hot-toast";
-import React, { useState } from "react"; // Ensure React is imported for useState
+import { useState } from "react";
+// Ensure React is imported for useState
 
 // Sample recipe data
 const recipes = [
